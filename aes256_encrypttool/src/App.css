@@ -35,7 +35,7 @@ body, html {
     flex: 1;
     gap: 80px;
     padding: 80px;
-    padding-bottom: 250px;
+    padding-bottom: 200px;
   }
   
   .input-container,
@@ -143,4 +143,20 @@ body, html {
   .encrypt-button:focus,
   .decrypt-button:focus {
     outline: none;
+  }
+
+  .enter-container {
+    display: flex;
+    margin-top: 10%;
+    height: 20%;
+    align-items: center;
+  }
+  .enter-button {
+    font-size: 14px;
+    width: 100%;
+    height: 100%;
+    border-radius: 0%;
+    background-color: rgb(221, 221, 221);
+    color: black;
+    overflow: hidden;
   }

@@ -110,6 +110,14 @@ function App() {
               </label>
             )}
           </div>
+
+          <div className='enter-container'>
+            {isEncryption ? (
+              <button type='button' className='enter-button'>Encrypt</button>
+            ) : (
+              <button type='button' className='enter-button'>Decrypt</button>
+            )}
+          </div>
         </div>
 
         {/* Right Panel */}

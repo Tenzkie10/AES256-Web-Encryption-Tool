@@ -86,8 +86,7 @@ function App() {
               />
               Base64
             </label>
-            {isEncryption ? (
-              <label>
+            <label>
                 <input
                   type='radio'
                   name='otf-option'
@@ -96,19 +95,7 @@ function App() {
                   onChange={(e) => setOutputFormat(e.target.value)}
                 />
                 HEX
-              </label>
-            ) : (
-              <label>
-                <input
-                  type='radio'
-                  name='otf-option'
-                  value='plain'
-                  checked={outputFormat === 'plain'}
-                  onChange={(e) => setOutputFormat(e.target.value)}
-                />
-                Plain Text
-              </label>
-            )}
+            </label>
           </div>
 
           <div className='enter-container'>

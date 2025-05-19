@@ -91,7 +91,8 @@ body, html {
   }
 
   .mode-select,
-  .padding-select {
+  .padding-select,
+  .taglen-select {
     padding: 10px;
     font-size: 14px;
     text-align: center;

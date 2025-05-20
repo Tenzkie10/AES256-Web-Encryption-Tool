@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
+import { ChevronsDown } from 'lucide-react';
+import aes256_logo from './assets/aes256_logo.png';
 
 function App() {
   const [process, setProcess] = useState('encrypt'); // for processes: 'encrypt' or 'decrypt' (encrypt as default)
@@ -15,10 +17,8 @@ function App() {
   return (
     <div className='app-container'>
       <header className='app-header'>
-        <div className='logo-container'>
-          <h3>Logo</h3>
-        </div>
-        <h1>Web App Name</h1>
+        <img src={aes256_logo} alt="Logo" className="logo-image"></img>
+        <h1>AES256 Encryption Tool</h1>
       </header>
 
       <main className='main-content'>
@@ -90,7 +90,7 @@ function App() {
 
           {isGCM && (
             <>
-              <label>Tag Length</label>
+              <label>Authentication Tag Length</label>
               <select id='tagLen' name='tagLen' className='taglen-select'>
                 <option value='96'>96</option>
                 <option value='104'>104</option>
@@ -149,6 +149,72 @@ function App() {
           />
         </div>
       </main>
+      {/* for the More Information */}
+      <div className='more-info-container'>
+        <h2>More Information Here</h2>
+        <a href='#infos'><ChevronsDown /></a>
+      </div>
+      <footer id='infos' className='app-footer'>
+          <div className='footer-label'>
+            <h2>AES256 (Advanced Encryption Standard with 256-bit key)</h2>
+            <p className='aes256-desc'>
+              - AES 256, or the Advanced Encryption Standard with a 256-bit key, is a symmetric encryption algorithm that uses a 256-bit key to encrypt and decrypt data.<br></br> 
+              - It's considered a very strong encryption method, used for protecting sensitive information like classified data. 
+            </p>
+          </div>
+          <div className='terms-container'>
+            <div className='modes-label'>
+              <h2>Modes:</h2>
+              <h3>ECB (Electronic Codebook)</h3>
+              <p className='ecb-desc'>
+                - The simplest mode, where each block of plaintext is encrypted independently using the same key.<br></br><br></br>
+              </p>
+              <h3>CBC (Cipher Block Chaining)</h3>
+              <p className='cbc-desc'>
+                - This chaining prevents identical plaintext blocks from producing identical ciphertext blocks, improving security.<br></br>
+                - Requires an Initialization Vector (IV) to ensure different encryption for each message.<br></br><br></br>
+              </p>
+              <h3>CTR (Counter)</h3>
+              <p className='ctr-desc'>
+                - Converts AES into a stream cipher, allowing for encryption of smaller data units.<br></br><br></br>
+              </p>
+              <h3>GCM (Galois/Counter Mode)</h3>
+              <p className='gcm-desc'>
+                - Combines Counter mode for encryption with a Galois mode for authentication.<br></br>
+                - Provides both confidentiality (through encryption) and authenticity (through a MAC or authentication tag).
+              </p>
+            </div>
+            <div className='other-configs-label'>
+              <h2>PKCS5Padding</h2>
+              <p className='padding-desc'>
+                - PKCS5Padding adds padding bytes to the end of the input data until the total length becomes a multiple of the block size.
+              </p>
+              <h2>Initialization Vector (IV)</h2>
+              <p className='iv-desc'>
+                - This ensures that even with the same key, each encryption will produce a unique ciphertext. 
+              </p>
+              <h2>Authentication Tag</h2>
+              <p className='tag-len-desc'>
+                - A value appended to the ciphertext to ensure that the ciphertext has not been tampered with and that the recipient is the intended recipient. 
+              </p>
+              <h2>Secret Key</h2>
+              <p className='sk-desc'>
+                - Used in conjunction with the AES algorithm to scramble the plaintext (original data) into ciphertext (encrypted data) and then to unscramble the ciphertext back into the original plaintext. 
+              </p>
+            </div>
+            <div className='output-text-format-label'>
+              <h2>Output Text Formats:</h2>
+              <h3>Base64</h3>
+              <p className='base64-desc'>
+                - Encodes binary data into a limited set of 64 printable characters
+              </p>
+              <h3>HEX</h3>
+              <p className='hex-desc'>
+                - Uses a combination of 16 digits (0-9), A-F) to represent binary data.
+              </p>
+            </div>
+          </div>
+      </footer>
     </div>
   );
 }

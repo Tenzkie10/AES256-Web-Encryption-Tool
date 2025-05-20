@@ -1,15 +1,30 @@
-body, html {
-    height: 100%;
+html {
+  display: flex;
+  flex-direction: row;
+  height: 1850px;
+  width: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #141414;
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+    overflow-y: auto;
+    height: 1850px;
+    width: 100%;
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+    background-color: #141414;
   }
   
   .app-container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 1850px;
     width: 100%;
+    
   }
   
   .app-header {
@@ -17,17 +32,14 @@ body, html {
     align-items: center;
     padding: 20px;
     gap: 20px;
-    background-color: #ffffff;
+    background-color: #28143c;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.637);
   }
   
-  .logo-container {
+  .logo-image {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    background-color: rgb(204, 204, 204);
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
   
   .main-content {
@@ -35,19 +47,20 @@ body, html {
     flex: 1;
     gap: 80px;
     padding: 80px;
-    padding-bottom: 200px;
   }
   
   .input-container,
   .output-container {
-    background-color: rgb(204, 204, 204);
+    background-color: #28283c;
     display: flex;
     flex-direction: column;
     flex: 2;
+    height: 500px;
     padding: 20px;
+    border-radius: 1%;
   }
   .config-container {
-    background-color: rgb(204, 204, 204);
+    background-color: #28143c;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -64,9 +77,10 @@ body, html {
   .output-text-box {
     height: 100%;
     font-size: 14px;
-    background-color: #f5f5f5;
+    background-color: #3c3c64;
     color: black;
     resize: none;
+    outline: none;
   }
   
   .encrypt-button{
@@ -74,8 +88,8 @@ body, html {
     width: 50%;
     height: 100%;
     border-radius: 0%;
-    background-color: rgb(221, 221, 221);
-    color: black;
+    background-color: #3c3c64;
+    color: rgb(255, 255, 255);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     overflow: hidden;
   }
@@ -84,8 +98,8 @@ body, html {
     width: 50%;
     height: 100%;
     border-radius: 0%;
-    background-color: rgb(221, 221, 221);
-    color: black;
+    background-color: #3c3c64;
+    color: rgb(255, 255, 255);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     overflow: hidden;
   }
@@ -96,35 +110,37 @@ body, html {
     padding: 10px;
     font-size: 14px;
     text-align: center;
-    background-color: rgb(221, 221, 221);
+    height: 10%;
+    background-color: #3c3c64;
     color: black;
   }
 
   .iv-input {
     font-size: 14px;
     color: black;
-    background-color: rgb(221, 221, 221);
-    height: 5%;
+    background-color: #3c3c64;
+    height: 10%;
   }
 
   .sk-input {
     font-size: 14px;
     color: black;
-    background-color: rgb(221, 221, 221);
-    height: 5%;
+    background-color: #3c3c64;
+    height: 10%;
   }
 
   .otf-container {
     display: flex;
     flex-direction: row;
     height: 10%;
-    background-color: rgb(221, 221, 221);
+    background-color: #3c3c64;
     gap: 10%;
     overflow: hidden;
+    align-items: center;
   }
 
   label {
-    margin-top: 5%;
+    margin-top: 2%;
     margin-bottom: 1%;
     text-align: center;
   }
@@ -135,8 +151,8 @@ body, html {
     width: 50%;
     height: 100%;
     border-radius: 0%;
-    background-color: rgb(139, 139, 139);
-    color: black;
+    background-color: #2d2d4b;
+    color: rgb(255, 255, 255);
     box-shadow: inset 0 -4px 6px rgba(0, 0, 0, 0.2);
     overflow: hidden;
   }
@@ -157,7 +173,105 @@ body, html {
     width: 100%;
     height: 100%;
     border-radius: 0%;
-    background-color: rgb(221, 221, 221);
+    background-color: #3c3c64;
     color: black;
     overflow: hidden;
   }
+
+  .more-info-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #28143c;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .app-footer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: #28283c;
+  }
+
+  .footer-label {
+    height: 20%;
+    width: 100%;
+    background-color: #222233;
+    box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.637);
+  }
+
+  .footer-label h2 {
+    margin-left: 50px;
+  }
+
+  .aes256-desc {
+    padding-left: 10em;
+  }
+
+  .terms-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 80px;
+  }
+
+  .modes-label {
+    margin-left: 50px;
+    flex: 1;
+  }
+
+  .ecb-desc {
+    padding-left: 2em;
+  }
+
+  .cbc-desc {
+    padding-left: 2em;
+  }
+
+  .ctr-desc {
+    padding-left: 2em;
+  }
+
+  .gcm-desc {
+    padding-left: 2em;
+  }
+
+  .other-configs-label {
+    flex: 1;
+    margin-left: 50px;
+  }
+
+  .padding-desc {
+    padding-left: 2em;
+  }
+
+  .iv-desc {
+    padding-left: 2em;
+  }
+
+  .tag-len-desc {
+    padding-left: 2em;
+  }
+
+  .sk-desc {
+    padding-left: 2em;
+  }
+
+  .output-text-format-label {
+    flex: 1;
+    margin-left: 50px;
+  }
+
+  .base64-desc {
+    padding-left: 2em;
+  }
+
+  .hex-desc {
+    padding-left: 2em;
+  }
+
+  
+
+

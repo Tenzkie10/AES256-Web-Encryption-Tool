@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './App.css';
 import { ChevronsDown } from 'lucide-react';
 import aes256_logo from './assets/aes256_logo.png';
@@ -7,12 +8,57 @@ function App() {
   const [process, setProcess] = useState('encrypt'); // for processes: 'encrypt' or 'decrypt' (encrypt as default)
   const [mode, setMode] = useState('ECB'); // for modes: 'ECB', 'CBC', 'CTR', or 'GCM' (ECB as default)
   const [outputFormat, setOutputFormat] = useState('base64');
+  const [inputText, setInputText] = useState(''); // for input text
+  const [outputText, setOutputText] = useState(''); // for output text
+  const [secretKey, setSecretKey] = useState(''); // for secret key
+  const [padding, setPadding] = useState('noPadding'); // for padding (noPadding as default)
+  const [iv, setIv] = useState(''); // for Initialization Vector (IV)
 
   const isEncryption = process === 'encrypt';
   const isECB = mode === 'ECB';
   const isCBC = mode === 'CBC';
   const isCTR = mode === 'CTR';
   const isGCM = mode === 'GCM';
+
+  const handleProcess = async () => {
+    try {
+
+      if (!inputText.trim()) {
+        alert('Please enter the text to encrypt or decrypt.');
+        return;
+      }
+      if (!secretKey.trim()) {
+        alert('Please enter the secret key.');
+        return;
+      }
+
+      const url = process === 'encrypt' ? '/encrypt' : '/decrypt';
+      const payload = {
+        key: btoa(secretKey), // Encode the key in base64
+        ciphertext: inputText,
+        mode,
+        message: inputText,
+        format: outputFormat,
+        ...(mode === 'ECB' && { padding }),
+        ...(mode === 'CBC' && { iv }),
+        ...(mode === 'CTR' && { iv }),
+        ...(mode === 'GCM' && { iv }),
+        ...(mode === 'GCM' && { iv, tag_len: parseInt(document.getElementById('tagLen').value) }),
+      };
+
+      const response = await axios.post(`http://127.0.0.1:5000${url}`, payload);
+      if (process === 'encrypt') {
+        setOutputText(response.data.ciphertext);
+      } else {
+        setOutputText(response.data.plaintext);
+      }
+    } catch (error) {
+      console.error('Error:', error.response?.data?.error || error.message);
+      alert('An error occurred: ' + (error.response?.data?.error || error.message));
+    }
+  };
+
+
 
   return (
     <div className='app-container'>
@@ -28,6 +74,8 @@ function App() {
           <textarea
             className='input-text-box'
             placeholder={isEncryption ? 'Enter plain text' : 'Enter cipher text'}
+            value={inputText}
+            onChange={(e) => setInputText(e.target.value)}
           />
         </div>
 
@@ -70,7 +118,7 @@ function App() {
           {(isECB || isCBC) && (
             <>
               <label>Padding</label>
-              <select id='padding' name='padding' className='padding-select'>
+              <select id='padding' name='padding' className='padding-select' value={padding} onChange={(e) => setPadding(e.target.value)}>
                 <option value='noPadding'>noPadding</option>
                 <option value='PKCS5Padding'>PKCS5Padding</option>
               </select>
@@ -83,7 +131,9 @@ function App() {
               <input
                 type='text'
                 className='iv-input'
-                placeholder='Enter Initialization Vector.'
+                placeholder='Enter Initialization Vector. (16 characters)'
+                value={iv}
+                onChange={(e) => setIv(e.target.value)}
               />
             </>
           )}
@@ -106,7 +156,9 @@ function App() {
           <input
             type='text'
             className='sk-input'
-            placeholder='Enter Secret Key.'
+            placeholder='Enter Secret Key. (16, 24, or 32 characters)'
+            value={secretKey}
+            onChange={(e) => setSecretKey(e.target.value)}
           />
 
           <label>Output Text Format</label>
@@ -134,7 +186,7 @@ function App() {
           </div>
 
           <div className='enter-container'>
-            <button type='button' className='enter-button'>
+            <button type='button' className='enter-button' onClick={handleProcess}>
               {isEncryption ? 'Encrypt' : 'Decrypt'}
             </button>
           </div>
@@ -146,6 +198,8 @@ function App() {
           <textarea
             className='output-text-box'
             placeholder={isEncryption ? 'Cipher output' : 'Decrypted plain text'}
+            value={outputText}
+            readOnly
           />
         </div>
       </main>

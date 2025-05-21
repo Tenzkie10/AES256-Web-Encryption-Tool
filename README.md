@@ -52,3 +52,5 @@ Ctrl + Click the http://localhost:5173/ to run the web-app to your browser
 - Authentication tag length can be 96, 104, 112, 120, or 128
 - Secret Key can be 16, 24, or 32 characters
 - Base64 or Hex Output
+
+## Conclusion

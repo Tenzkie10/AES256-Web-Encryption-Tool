@@ -1,6 +1,10 @@
 # AES256-Web-Encryption-Tool
 
-Advanced Encryption Standard (AES) is a symmetric  block cipher encryption algorithm.
+The AES256 Web Encryption Tool is a simple and practical way to explore how AES (Advanced Encryption Standard) works. AES is a symmetric block cipher encryption algorithm that's widely used to securely encrypt and decrypt data.
+
+This tool supports different AES modes ECB, CBC, CTR, and GCM each with specific settings like padding, initialization vectors (IV), tag lengths, and output formats (Base64 or Hex). It gives users the flexibility to try different encryption methods depending on their needs.
+
+With an easy-to-follow setup guide and a clean interface, the app is great for learning, testing, or experimenting with AES encryption in a web environment. Whether you're just getting started or looking to understand how encryption works behind the scenes, this tool provides a straightforward and hands-on experience.
 
 ## Tutorial for running the Web-App
 1. Open your terminal in VSCode
@@ -8,7 +12,7 @@ Advanced Encryption Standard (AES) is a symmetric  block cipher encryption algor
 2. Make sure to run this command to verify library
 ![image](https://github.com/user-attachments/assets/829e47f2-93ac-401f-a243-6ada1cd54cdb)
 
-3. To run the web-app: npm run dev
+3. To run the web-app - npm run dev
    
 ![image](https://github.com/user-attachments/assets/1644be43-c2b9-4174-bbeb-9fa33609a878)
 
@@ -18,7 +22,7 @@ Ctrl + Click the http://localhost:5173/ to run the web-app to your browser
 
 ![image](https://github.com/user-attachments/assets/d5676a8b-6083-4026-a696-af667b4e7ee1)
 
-5.  Run this command
+5.  Run this command - python api.py
 
 ![image](https://github.com/user-attachments/assets/b04dd2f0-77f2-420a-9505-7876d541cc85)
 

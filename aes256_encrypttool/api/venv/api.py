@@ -23,7 +23,7 @@ def decode(data, fmt):
         return binascii.unhexlify(data)
     return None
 
-# Encryption function
+# Encryption methods
 @app.route("/encrypt", methods=["POST"])
 def encrypt():
     # Variables for data's from the users inputs
@@ -78,7 +78,8 @@ def encrypt():
     
     except Exception as e:
         return jsonify({"error": str(e)}), 400 # Error 
-        
+
+# Decryption methods        
 @app.route("/decrypt", methods=["POST"])        
 def decrypt():
     # Variables for data's from the users inputs

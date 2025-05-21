@@ -27,6 +27,7 @@ Ctrl + Click the http://localhost:5173/ to run the web-app to your browser
 ![image](https://github.com/user-attachments/assets/5e3624b4-13d3-40e9-8199-143c8521e6ef)
 
 ## How to use different modes of encryption
+### Encryption
 ### ECB
 **The ECB requires a padding, secret key and a output of base64 or hex format**
 - PKCS5Padding
@@ -53,4 +54,29 @@ Ctrl + Click the http://localhost:5173/ to run the web-app to your browser
 - Secret Key can be 16, 24, or 32 characters
 - Base64 or Hex Output
 
+### Decryption
+
+### ECB
+**The ECB requires a padding, secret key and a output of base64 or hex format**
+- PKCS5Padding
+- Secret Key can be 16, 24, or 32 characters
+- Base64 or Hex Output
+  
+### CBC
+**The CBC requires a padding, secret key and a output of base64 or hex format**
+- PKCS5Padding
+- Secret Key can be 16, 24, or 32 characters
+- Base64 or Hex Output
+  
+### CTR
+**The CTR requires a secret key and a output of base64 or hex format**
+- Secret Key can be 16, 24, or 32 characters
+- Base64 or Hex Output
+  
+### GCM
+**The GCM requires an authentication tag length, secret key and a output of base64 or hex format**
+- Authentication tag length can be 96, 104, 112, 120, or 128
+- Secret Key can be 16, 24, or 32 characters
+- Base64 or Hex Output
+- 
 ## Conclusion

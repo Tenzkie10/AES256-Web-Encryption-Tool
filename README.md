@@ -78,5 +78,8 @@ Ctrl + Click the http://localhost:5173/ to run the web-app to your browser
 - Authentication tag length can be 96, 104, 112, 120, or 128
 - Secret Key can be 16, 24, or 32 characters
 - Base64 or Hex Output
-- 
+  
 ## Conclusion
+The AES256 Web Encryption Tool makes it easy to explore and use AES encryption right from your browser. With support for multiple modes like ECB, CBC, CTR, and GCM, users can try out different encryption setups by adjusting settings like padding, IVs, and output formats (Base64 or Hex).
+
+The app is simple to run with a clear step-by-step guide for launching both the frontend and backend. It’s a useful tool for learning how AES works, testing encryption setups, or just getting more familiar with secure data handling. Overall, it’s a practical and hands-on way to work with AES encryption in a modern web environment.

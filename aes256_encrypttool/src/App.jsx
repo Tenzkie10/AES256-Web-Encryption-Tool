@@ -8,17 +8,46 @@ function App() {
   const [process, setProcess] = useState('encrypt'); // for processes: 'encrypt' or 'decrypt' (encrypt as default)
   const [mode, setMode] = useState('ECB'); // for modes: 'ECB', 'CBC', 'CTR', or 'GCM' (ECB as default)
   const [outputFormat, setOutputFormat] = useState('base64');
+  const [skChar, setSKChar] = useState('16') // for secret key character options
   const [inputText, setInputText] = useState(''); // for input text
   const [outputText, setOutputText] = useState(''); // for output text
   const [secretKey, setSecretKey] = useState(''); // for secret key
+  const handleSKCharChange = (value) => {
+    setSKChar(value);
+  // If the secretKey is longer than the new length, trim it
+    if (secretKey.length > Number(value)) {
+      setSecretKey(secretKey.slice(0, Number(value)));
+    }
+  };
   const [padding, setPadding] = useState('noPadding'); // for padding (noPadding as default)
   const [iv, setIv] = useState(''); // for Initialization Vector (IV)
-
   const isEncryption = process === 'encrypt';
   const isECB = mode === 'ECB';
   const isCBC = mode === 'CBC';
   const isCTR = mode === 'CTR';
   const isGCM = mode === 'GCM';
+
+  // For Secret Key
+  const generateRandomKey = () => {
+    const length = Number(skChar)
+    const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let key = '';
+    for (let i = 0; i < length; i++){
+      key += charset.charAt(Math.floor(Math.random() * charset.length))
+    }
+    setSecretKey(key)
+  };
+
+  // For IV
+  const generateRandomKeyIV = () => {
+    const length = 16
+    const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let ivValue = '';
+    for (let i = 0; i < length; i++){
+      ivValue += charset.charAt(Math.floor(Math.random() * charset.length))
+    }
+    setIv(ivValue)
+  };
 
   const handleProcess = async () => {
     try {
@@ -128,8 +157,12 @@ function App() {
           {(isCBC || isCTR || isGCM) && (
             <>
               <label>IV</label>
+              <div className='iv-generate-container'>
+                <button type='button' className='iv-generate' onClick={generateRandomKeyIV}>Generate IV</button>
+              </div>
               <input
                 type='text'
+                maxLength={16}
                 className='iv-input'
                 placeholder='Enter Initialization Vector. (16 characters)'
                 value={iv}
@@ -153,12 +186,47 @@ function App() {
 
           {/* seperated from the condition because its in every Mode */}
           <label>Secret Key</label>
-          <input
-            type='text'
-            className='sk-input'
-            placeholder='Enter Secret Key. (16, 24, or 32 characters)'
-            value={secretKey}
-            onChange={(e) => setSecretKey(e.target.value)}
+          <div className='sk-char-option-container'>
+            <label>
+              <input
+                type='radio'
+                name='sk-char-option'
+                value='16'
+                checked={skChar === '16'}
+                onChange={(e) => handleSKCharChange(e.target.value)}
+              />
+              16
+            </label>
+            <label>
+              <input
+                type='radio'
+                name='sk-char-option'
+                value='24'
+                checked={skChar === '24'}
+                onChange={(e) => handleSKCharChange(e.target.value)}
+              />
+              24
+            </label>
+            <label>
+              <input
+                type='radio'
+                name='sk-char-option'
+                value='32'
+                checked={skChar === '32'}
+                onChange={(e) => handleSKCharChange(e.target.value)}
+              />
+              32
+            </label>
+            <button type='button' className='skChar-generate' onClick={generateRandomKey}>Generate SK</button>
+          </div>
+          
+          <input 
+          type='text'
+          maxLength={Number(skChar)}
+          className='sk-input'
+          placeholder='Enter Secret Key. (16, 24, or 32 characters)'
+          value={secretKey}
+          onChange={(e) => setSecretKey(e.target.value)}
           />
 
           <label>Output Text Format</label>

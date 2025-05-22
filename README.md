@@ -28,7 +28,18 @@ Ctrl + Click the http://localhost:5173/ to run the web-app to your browser
 
 ## User Interface
 ### Encrypt and Decrypt UI
+**ECB**
 ![image](https://github.com/user-attachments/assets/36af433f-889d-4111-8158-6a11d5c4f7dc)
+
+**CBC**
+![image](https://github.com/user-attachments/assets/7ef4db8e-e8a8-4736-8ab1-8c74bd2f9ad9)
+
+**CTR**
+![image](https://github.com/user-attachments/assets/90affe7c-4fd3-40c7-b8bd-b9e9e94365e0)
+
+**GCM**
+![image](https://github.com/user-attachments/assets/b6a1b0be-2aed-473b-8d3f-cd8e7409a2d3)
+
 
 ### Descriptions
 ![image](https://github.com/user-attachments/assets/5e3624b4-13d3-40e9-8199-143c8521e6ef)

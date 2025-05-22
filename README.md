@@ -11,7 +11,8 @@ With an easy-to-follow setup guide and a clean interface, the app is great for l
 2. Open a specific folder to save
 3. Open Terminal or ctrl + shift + `
 4. Copy this and run - git clone https://github.com/Tenzkie10/AES256-Web-Encryption-Tool.git
-
+5. Make sure to cd ~/aes256_encrypttool/ folder
+   
 ## Tutorial for running the Web-App
 1. Open your terminal in VSCode
    

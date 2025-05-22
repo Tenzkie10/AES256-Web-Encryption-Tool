@@ -6,6 +6,12 @@ This tool supports different AES modes ECB, CBC, CTR, and GCM each with specific
 
 With an easy-to-follow setup guide and a clean interface, the app is great for learning, testing, or experimenting with AES encryption in a web environment. Whether you're just getting started or looking to understand how encryption works behind the scenes, this tool provides a straightforward and hands-on experience.
 
+## Cloning the Web-App
+1. Open VSCode
+2. Open a specific folder to save
+3. Open Terminal or ctrl + shift + `
+4. Copy this and run - git clone https://github.com/Tenzkie10/AES256-Web-Encryption-Tool.git
+
 ## Tutorial for running the Web-App
 1. Open your terminal in VSCode
    
@@ -18,7 +24,7 @@ With an easy-to-follow setup guide and a clean interface, the app is great for l
 
 Ctrl + Click the http://localhost:5173/ to run the web-app to your browser
 
-4. To run the backend, open another terminal then got to this location
+4. To run the backend, open another terminal then go to this location
 
 ![image](https://github.com/user-attachments/assets/d5676a8b-6083-4026-a696-af667b4e7ee1)
 

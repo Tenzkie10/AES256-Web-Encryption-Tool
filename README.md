@@ -27,7 +27,10 @@ Ctrl + Click the http://localhost:5173/ to run the web-app to your browser
 ![image](https://github.com/user-attachments/assets/b04dd2f0-77f2-420a-9505-7876d541cc85)
 
 ## User Interface
-![image](https://github.com/user-attachments/assets/dfee7104-0a7b-477b-889f-a796040c0406)
+### Encrypt and Decrypt UI
+![image](https://github.com/user-attachments/assets/36af433f-889d-4111-8158-6a11d5c4f7dc)
+
+### Descriptions
 ![image](https://github.com/user-attachments/assets/5e3624b4-13d3-40e9-8199-143c8521e6ef)
 
 ## How to use different modes of encryption
